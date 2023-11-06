@@ -1,0 +1,49 @@
+.search {
+    .filterContainer {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border: 1px solid #bdbcbc;
+        border-radius: 50px;
+
+        .anywhere,
+        .anyweek {
+            padding: .5rem 1rem;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4e4e4e;
+            border-right: 1px solid #bdbcbc;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .anyweek {
+            padding-left: 0;
+        }
+
+        .guest {
+            display: flex;
+            align-items: center;
+            padding: .5rem 1rem .5rem 0;
+            gap: .5rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            .add {
+                font-size: 13px;
+            }
+
+            .searchIcon {
+                background: red;
+                border-radius: 50%;
+                padding: .5rem;
+                font-size: 2rem;
+                color: aliceblue;
+            }
+        }
+    }
+}

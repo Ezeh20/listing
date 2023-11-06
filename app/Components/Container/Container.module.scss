@@ -1,0 +1,12 @@
+.container {
+    max-width: 1920px;
+    margin-inline: 24px;
+
+    @media screen and (max-width: 425px) {
+        margin-inline: 16px;
+    }
+
+    @media screen and (min-width: 1960px) {
+        margin-inline: auto;
+    }
+}
