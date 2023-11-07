@@ -42,6 +42,11 @@
         border-radius: 10px;
         border: 1px solid #bdbcbc;
         z-index: 10;
+        right: 0;
+
+        @media screen and (max-width:600px) {
+            width: 200px;
+        }
 
         .menuContainer {
             display: flex;

@@ -3,7 +3,7 @@ import React, { useCallback, useState } from "react";
 import styles from "./Menu.module.scss";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoPersonOutline } from "react-icons/io5";
-import MenuItems from "../MenuItems/MenuItems";
+import MenuItems from "./MenuItems/MenuItems";
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,8 +25,8 @@ const Menu = () => {
         <div className={styles.menuItemsContainer}>
           <div className={styles.menuContainer}>
             <>
-              <MenuItems label="Login" />
-              <MenuItems label="Singup" />
+              <MenuItems close={setIsOpen} label="Login" />
+              <MenuItems close={setIsOpen} label="Singup" />
             </>
           </div>
         </div>
