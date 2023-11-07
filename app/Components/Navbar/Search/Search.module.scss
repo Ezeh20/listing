@@ -1,15 +1,21 @@
 .search {
+    @media screen and (max-width:425px) {
+        width: 100%;
+    }
+
     .filterContainer {
         display: flex;
         align-items: center;
         gap: 1rem;
-        border: 1px solid #bdbcbc;
+        border: 1px solid #d1d1d1;
         border-radius: 50px;
+        width: 100%;
+        justify-content: space-between;
 
         .anywhere,
         .anyweek {
-            padding: .5rem 1rem;
-            font-size: 13px;
+            padding: .2rem .8rem;
+            font-size: 12px;
             font-weight: 600;
             color: #4e4e4e;
             border-right: 1px solid #bdbcbc;
@@ -26,7 +32,7 @@
         .guest {
             display: flex;
             align-items: center;
-            padding: .5rem 1rem .5rem 0;
+            padding: .4rem .5rem .4rem 0;
             gap: .5rem;
 
             &:hover {
@@ -40,9 +46,25 @@
             .searchIcon {
                 background: red;
                 border-radius: 50%;
-                padding: .5rem;
-                font-size: 2rem;
+                padding: .4rem;
+                font-size: 1.7rem;
                 color: aliceblue;
+            }
+        }
+
+        @media screen and (max-width:425px) {
+            .anyweek {
+                display: none;
+            }
+
+            .anywhere {
+                border-right: none;
+            }
+
+            .guest {
+                .add {
+                    display: none;
+                }
             }
         }
     }
