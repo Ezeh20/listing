@@ -1,0 +1,28 @@
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.outline {
+    background: transparent;
+    border: 1px solid #888;
+    color: #222;
+    font-weight: 500;
+}
+
+.noOutline {
+    background: rgb(241, 41, 41);
+    color: #fff;
+}
+
+.small {
+    padding: .5rem;
+    border-radius: 5px;
+}
+
+.normal {
+    padding: 1rem;
+}
