@@ -13,16 +13,20 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   label,
   onClick,
+  disabled,
   outline,
   icon: Icon,
   small,
 }) => {
-
   return (
-    <button className={`${styles.btn} 
-    ${small ? `${styles.small}`:`${styles.normal}`}
+    <button
+      className={`${styles.btn} 
+    ${small ? `${styles.small}` : `${styles.normal}`}
     ${outline ? `${styles.outline}` : `${styles.noOutline}`}
-    `}>
+    ${disabled ? `${styles.disabled}` : ""}
+    `}
+      onClick={onClick}
+      disabled={disabled}>
       {Icon && <Icon />}
       <span>{label}</span>
     </button>

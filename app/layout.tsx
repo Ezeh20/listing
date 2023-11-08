@@ -22,7 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <Modal isOpen title="Login" />
+        <Modal
+          actionLabel="click me"
+          secondaryActionLabel="cancle"
+          secondaryAction
+          isOpen
+          title="Login"
+        />
         <Navbar />
         {children}
       </body>

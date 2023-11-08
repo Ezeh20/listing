@@ -91,7 +91,19 @@ const Modal: React.FC<ModalProps> = ({
               {/* footer */}
               <div className={styles.footer}>
                 <div className={styles.footerContent}>
-                  <Button label="Click me" small />
+                  {secondaryAction && secondaryActionLabel && (
+                    <Button
+                      outline
+                      label={secondaryActionLabel}
+                      disabled={disabled}
+                      onClick={handleSecondaryAction}
+                    />
+                  )}
+                  <Button
+                    label={actionLabel}
+                    disabled={disabled}
+                    onClick={handleAction}
+                  />
                 </div>
               </div>
             </div>
