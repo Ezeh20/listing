@@ -88,9 +88,9 @@ const Modal: React.FC<ModalProps> = ({
               </div>
               {/* body */}
               <div className={styles.body}>{content}</div>
-              {/* footer */}
-              <div className={styles.footer}>
-                <div className={styles.footerContent}>
+              {/* action */}
+              <div className={styles.action}>
+                <div className={styles.actionContent}>
                   {secondaryAction && secondaryActionLabel && (
                     <Button
                       outline
@@ -106,6 +106,8 @@ const Modal: React.FC<ModalProps> = ({
                   />
                 </div>
               </div>
+              {/* footer */}
+              <div>{footer}</div>
             </div>
           </div>
         </div>

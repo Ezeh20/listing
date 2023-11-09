@@ -7,10 +7,10 @@ interface MenuItemsProps {
   label: string;
 }
 const MenuItems: React.FC<MenuItemsProps> = ({ close, onClick, label }) => {
-
   const menuClick = useCallback(() => {
     close((prev) => !prev);
-  }, [close]);
+    onClick();
+  }, [close, onClick]);
 
   return (
     <div className={styles.menus} onClick={menuClick}>

@@ -4,8 +4,10 @@ import styles from "./Menu.module.scss";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoPersonOutline } from "react-icons/io5";
 import MenuItems from "./MenuItems/MenuItems";
+import useRegister from "@/app/hooks/useRegister";
 
 const Menu = () => {
+  const { onOpen } = useRegister();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = useCallback(() => {
@@ -25,7 +27,7 @@ const Menu = () => {
         <div className={styles.menuItemsContainer}>
           <div className={styles.menuContainer}>
             <>
-              <MenuItems close={setIsOpen} label="Login" />
+              <MenuItems close={setIsOpen} label="Login" onClick={onOpen} />
               <MenuItems close={setIsOpen} label="Singup" />
             </>
           </div>

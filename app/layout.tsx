@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Components/Navbar/Navbar";
-import Modal from "./Components/Modal/Modal";
+import RegisterModal from "./Components/Modal/RegisterModal/RegisterModal";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,13 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <Modal
-          actionLabel="click me"
-          secondaryActionLabel="cancle"
-          secondaryAction
-          isOpen
-          title="Login"
-        />
+        <RegisterModal />
         <Navbar />
         {children}
       </body>
