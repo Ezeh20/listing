@@ -12,6 +12,10 @@ html,
   height: 100%;
 }
 
+input,select{
+  outline: none;
+}
+
 body{
   font-size: 16px;
   color: #727272;
