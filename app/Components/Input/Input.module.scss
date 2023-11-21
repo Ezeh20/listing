@@ -3,16 +3,40 @@
     flex-direction: column;
     gap: .3rem;
 
-    .label{
+    .label {
         font-weight: 600;
     }
-    .input{
-        border: 1px solid #9a9a9a;
-        padding: .7rem .5rem;
-        border-radius: 5px;
-    }
-    .input::placeholder{
-        font-size: 15px;
-        opacity: .8;
+
+    .content {
+        position: relative;
+        width: 100%;
+
+        .input {
+            width: 100%;
+            border: 1px solid #9a9a9a;
+            padding: .7rem .5rem;
+            border-radius: 5px;
+        }
+        .error{
+            border: 1px solid rgb(243, 104, 104);
+        }
+
+        .input::placeholder {
+            font-size: 15px;
+            opacity: .8;
+        }
+        .small{
+            color: red;
+            font-size: 15px;
+        }
+        .dollar{
+            position: absolute;
+            right: 10px;
+            top: 28%;
+            font-size: 19px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
     }
 }

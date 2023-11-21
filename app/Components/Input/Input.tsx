@@ -1,5 +1,6 @@
 import React from "react";
-import styles from './Input.module.scss'
+import styles from "./Input.module.scss";
+import { BsCurrencyDollar } from "react-icons/bs";
 
 interface InputProps {
   label?: string;
@@ -8,29 +9,43 @@ interface InputProps {
   value: string;
   type: string;
   error?: boolean;
+  errorMessage?: string;
+  formatPrice?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: React.FC<InputProps> = ({
-  label="Some label",
+  label = "Some label",
   id,
-  placeholder="Placeholder",
+  placeholder = "Placeholder",
   value,
-  type="text",
+  type = "text",
   error,
+  errorMessage,
   onChange,
+  formatPrice,
 }) => {
   return (
     <div className={styles.inputContainer}>
-      <label htmlFor={id} className={styles.label}>{label}</label>
-      <input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        className={error ? `${styles.input} ${styles.error}` : `${styles.input}`}
-      />
+      <label htmlFor={id} className={styles.label}>
+        {label}
+      </label>
+      <div className={styles.content}>
+        <div>
+          <input
+            id={id}
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            className={
+              error ? `${styles.input} ${styles.error}` : `${styles.input}`
+            }
+          />
+          {error && <small className={styles.small}>{errorMessage}</small>}
+        </div>
+        {formatPrice && <BsCurrencyDollar className={styles.dollar} />}
+      </div>
     </div>
   );
 };
