@@ -27,8 +27,8 @@ const Button: React.FC<ButtonProps> = ({
     `}
       onClick={onClick}
       disabled={disabled}>
-      {Icon && <Icon />}
-      <span>{label}</span>
+      {Icon && <Icon className={styles.icon}/>}
+      {label}
     </button>
   );
 };

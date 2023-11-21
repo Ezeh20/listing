@@ -6,7 +6,10 @@ import useRegister from "@/app/hooks/useRegister";
 import axios from "axios";
 import Header from "../../Header/Header";
 import Input from "../../Input/Input";
-
+import toast from "react-hot-toast";
+import Button from "../../Button/Button";
+import { FcGoogle } from "react-icons/fc";
+import { ImGithub } from "react-icons/im";
 const initialEntry = {
   name: {
     value: "",
@@ -26,7 +29,7 @@ const initialEntry = {
 };
 
 const RegisterModal = () => {
-  const { isOpen, onClose, onOpen } = useRegister();
+  const { isOpen, onClose } = useRegister();
   const [isLoading, setIsLoading] = useState(false);
   const [dataEntry, setDataEntry] = useState(initialEntry);
   const { name, email, password } = dataEntry;
@@ -37,7 +40,6 @@ const RegisterModal = () => {
     password: password.value,
   };
 
-  
   const submit = () => {
     setIsLoading(true);
     axios
@@ -46,7 +48,7 @@ const RegisterModal = () => {
         onClose();
       })
       .catch((error) => {
-        console.log(error);
+        toast.error("something went wrong");
       })
       .finally(() => {
         setIsLoading(false);
@@ -58,7 +60,7 @@ const RegisterModal = () => {
       <Header title="Welcome to my show" subtitle="Just a few more steps" />
       <form className={styles.form}>
         <Input
-          value={name.value}
+          value={data.name}
           label="Name"
           placeholder="fullname"
           id="fullname"
@@ -72,7 +74,7 @@ const RegisterModal = () => {
           }
         />
         <Input
-          value={email.value}
+          value={data.email}
           label="Email"
           placeholder="email address"
           type="email"
@@ -87,7 +89,7 @@ const RegisterModal = () => {
           }
         />
         <Input
-          value={password.value}
+          value={data.password}
           label="Password"
           placeholder="password"
           type="password"
@@ -105,6 +107,19 @@ const RegisterModal = () => {
     </div>
   );
 
+  const footer = (
+    <div className={styles.footerContainer}>
+      <div className={styles.footer}>
+        <Button outline label="signin with google" icon={FcGoogle} />
+        <Button outline label="signin with github" icon={ImGithub} />
+      </div>
+      <div className={styles.login}>
+        <p>already have an account?</p>
+        <p onClick={onClose} className={styles.click}>Login</p>
+      </div>
+    </div>
+  );
+
   return (
     <Modal
       disabled={isLoading}
@@ -114,6 +129,7 @@ const RegisterModal = () => {
       content={content}
       actionLabel="continue"
       action={submit}
+      footer={footer}
     />
   );
 };

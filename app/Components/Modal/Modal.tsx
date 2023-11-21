@@ -43,7 +43,7 @@ const Modal: React.FC<ModalProps> = ({
    */
   const handleClose = useCallback(() => {
     if (disabled) return;
-    setShowModal(false);
+    setShowModal(false)
     setTimeout(() => {
       onClose();
     }, 300);
@@ -107,7 +107,7 @@ const Modal: React.FC<ModalProps> = ({
                 </div>
               </div>
               {/* footer */}
-              <div>{footer}</div>
+              <div className={styles.footer}>{footer}</div>
             </div>
           </div>
         </div>
