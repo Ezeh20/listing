@@ -2,9 +2,9 @@ import React, { useCallback } from "react";
 import styles from "./MenuItems.module.scss";
 
 interface MenuItemsProps {
-  close: () => {};
-  onClick: () => void;
-  label: string;
+  close?: () => {};
+  onClick?: () => void;
+  label?: string;
 }
 const MenuItems: React.FC<MenuItemsProps> = ({ close, onClick, label }) => {
   const menuClick = useCallback(() => {

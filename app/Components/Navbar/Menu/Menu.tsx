@@ -27,8 +27,8 @@ const Menu = () => {
         <div className={styles.menuItemsContainer}>
           <div className={styles.menuContainer}>
             <>
-              <MenuItems close={setIsOpen} label="Login" onClick={onOpen} />
-              <MenuItems close={setIsOpen} label="Singup" />
+              <MenuItems close={setIsOpen} label="Login" onClick={()=>{}}/>
+              <MenuItems close={setIsOpen} label="Singup" onClick={onOpen} />
             </>
           </div>
         </div>
