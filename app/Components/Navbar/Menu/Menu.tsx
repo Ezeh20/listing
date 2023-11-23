@@ -5,9 +5,11 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { IoPersonOutline } from "react-icons/io5";
 import MenuItems from "./MenuItems/MenuItems";
 import useRegister from "@/app/hooks/useRegister";
+import useLoginModal from "@/app/hooks/useLogin";
 
 const Menu = () => {
   const { onOpen } = useRegister();
+  const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = useCallback(() => {
@@ -27,7 +29,13 @@ const Menu = () => {
         <div className={styles.menuItemsContainer}>
           <div className={styles.menuContainer}>
             <>
-              <MenuItems close={setIsOpen} label="Login" onClick={()=>{}}/>
+              <MenuItems
+                close={setIsOpen}
+                label="Login"
+                onClick={() => {
+                  loginModal.onOpen();
+                }}
+              />
               <MenuItems close={setIsOpen} label="Singup" onClick={onOpen} />
             </>
           </div>

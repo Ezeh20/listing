@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Components/Navbar/Navbar";
 import RegisterModal from "./Components/Modal/RegisterModal/RegisterModal";
+import LoginModal from "./Components/Modal/LoginModal/LoginModal";
 import ToastProvider from "./Providers/ToastProvider";
 
 const poppins = Poppins({
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <ToastProvider />
         <RegisterModal />
+        <LoginModal />
         <Navbar />
         {children}
       </body>
