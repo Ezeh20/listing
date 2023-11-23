@@ -11,6 +11,8 @@ import toast from "react-hot-toast";
 import Button from "../../Button/Button";
 import { FcGoogle } from "react-icons/fc";
 import { ImGithub } from "react-icons/im";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const initialEntry = {
   email: {
@@ -31,13 +33,28 @@ const LoginModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [dataEntry, setDataEntry] = useState(initialEntry);
   const { email, password } = dataEntry;
+  const router = useRouter();
 
   const data = {
     email: email.value,
     password: password.value,
   };
 
-  const submit = async () => {};
+  const submit = async () => {
+    const res = await signIn("credentials", {
+      ...data,
+      redirect: false,
+    });
+    if (res?.ok) {
+      toast.success("Logged in successfully");
+      router.refresh();
+      setTimeout(() => {
+        loginModal.onClose();
+      }, 500);
+    } else if (!res?.ok) {
+      toast.error(res?.error);
+    }
+  };
 
   const content = (
     <div className={styles.content}>

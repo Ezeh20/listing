@@ -1,11 +1,18 @@
-"use client"
+"use client";
 import React from "react";
 import Container from "../Container/Container";
 import styles from "./Navbar.module.scss";
 import Search from "./Search/Search";
 import Menu from "./Menu/Menu";
+import { User } from "@prisma/client";
 
-const Navbar = () => {
+
+interface navbarProps {
+  currentUser: User;
+}
+
+const Navbar: React.FC<navbarProps> = ({ currentUser }) => {
+
   return (
     <header
       className={`${styles.header} sticky top-0 w-full bg-white py-6 shadow-sm`}>

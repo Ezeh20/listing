@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import RegisterModal from "./Components/Modal/RegisterModal/RegisterModal";
 import LoginModal from "./Components/Modal/LoginModal/LoginModal";
 import ToastProvider from "./Providers/ToastProvider";
+import { getCurrentUser } from "./actions/getCurrentUser";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -16,18 +17,19 @@ export const metadata: Metadata = {
   description: "Find any property in your desired location",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const currentUser = await getCurrentUser();
   return (
     <html lang="en">
       <body className={poppins.className}>
         <ToastProvider />
         <RegisterModal />
         <LoginModal />
-        <Navbar />
+        <Navbar currentUser={currentUser} />
         {children}
       </body>
     </html>
