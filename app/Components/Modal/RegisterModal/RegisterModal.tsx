@@ -40,19 +40,18 @@ const RegisterModal = () => {
     password: password.value,
   };
 
-  const submit = () => {
-    setIsLoading(true);
-    axios
-      .post("/api/register", data)
-      .then(() => {
+  const submit = async () => {
+    // setIsLoading(true);
+    try {
+      const res = await axios.post("/api/register", data);
+      console.log(res.data);
+      toast.success(res.data.message);
+      setTimeout(() => {
         onClose();
-      })
-      .catch((error) => {
-        toast.error("something went wrong");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      }, 400);
+    } catch (error) {
+      toast.error(error.response.data.error);
+    }
   };
 
   const content = (
@@ -115,7 +114,9 @@ const RegisterModal = () => {
       </div>
       <div className={styles.login}>
         <p>already have an account?</p>
-        <p onClick={onClose} className={styles.click}>Login</p>
+        <p onClick={onClose} className={styles.click}>
+          Login
+        </p>
       </div>
     </div>
   );
