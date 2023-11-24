@@ -6,12 +6,14 @@ import Search from "./Search/Search";
 import Menu from "./Menu/Menu";
 import { User } from "@prisma/client";
 
-
 interface navbarProps {
-  currentUser: User;
+  currentUser: User | null;
 }
 
 const Navbar: React.FC<navbarProps> = ({ currentUser }) => {
+
+  console.log(currentUser);
+  
 
   return (
     <header

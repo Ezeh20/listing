@@ -2,7 +2,6 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth/next";
 import prisma from "@/app/libs/prismadb";
 
-
 //get the current session form next-auth and attach it to our authOptions
 
 export const getSession = async () => {
