@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import Button from "../../Button/Button";
 import { FcGoogle } from "react-icons/fc";
 import { ImGithub } from "react-icons/im";
+import { signIn } from "next-auth/react";
 
 const initialEntry = {
   name: {
@@ -113,7 +114,7 @@ const RegisterModal = () => {
     <div className={styles.footerContainer}>
       <div className={styles.footer}>
         <Button outline label="signin with google" icon={FcGoogle} />
-        <Button outline label="signin with github" icon={ImGithub} />
+        <Button outline label="signin with github" icon={ImGithub} onClick={() => signIn("github")} />
       </div>
       <div className={styles.login}>
         <p>already have an account?</p>

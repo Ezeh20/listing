@@ -14,17 +14,19 @@
 
     .toggle {
         display: flex;
+        align-items: center;
         gap: 16px;
         border: 2px solid #bdbcbc;
-        border-radius: 50px;
-        padding: .5rem;
+        border-radius: 20px;
+        padding: .2rem .5rem;
 
         &:hover {
             cursor: pointer;
         }
 
         .menuIcon {
-            font-size: 18px;
+            font-size: 20px;
+            font-weight: 600;
         }
 
         .menuIconAlt {
@@ -38,7 +40,7 @@
         position: absolute;
         background: #fff;
         width: 100%;
-        top: 4rem;
+        top: 4.4rem;
         border-radius: 10px;
         border: 1px solid #bdbcbc;
         z-index: 10;

@@ -1,0 +1,8 @@
+.avatarContainer{
+    width: 30px;
+    height: 30px;
+    .avatar{
+        border-radius:50px;
+        object-fit: cover;
+    }
+}
