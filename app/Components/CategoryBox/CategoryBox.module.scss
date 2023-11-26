@@ -1,0 +1,22 @@
+.category {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    align-items: center;
+    transition: all 400ms ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        color: #222;
+    }
+
+    .label {
+        font-size: 13px;
+    }
+}
+
+.selected {
+    color: #222;
+    font-weight: 500;
+    border-bottom: 1px solid #222;
+}

@@ -1,0 +1,13 @@
+.categories {
+    display: flex;
+    margin-top: 1.5rem;
+    gap: 1.4rem;
+    justify-content: space-between;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.categories::-webkit-scrollbar {
+    display: none;
+}

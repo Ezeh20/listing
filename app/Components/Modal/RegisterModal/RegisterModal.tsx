@@ -113,7 +113,7 @@ const RegisterModal = () => {
   const footer = (
     <div className={styles.footerContainer}>
       <div className={styles.footer}>
-        <Button outline label="signin with google" icon={FcGoogle} />
+        <Button outline label="signin with google" icon={FcGoogle} onClick={()=> signIn("google")}/>
         <Button outline label="signin with github" icon={ImGithub} onClick={() => signIn("github")} />
       </div>
       <div className={styles.login}>
