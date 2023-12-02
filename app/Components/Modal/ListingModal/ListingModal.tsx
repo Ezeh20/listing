@@ -34,7 +34,7 @@ const ListingModal = () => {
 
   const secondaryLabel = useMemo(() => {
     if (step === STEPS.CATEGORY) {
-      return null;
+      return undefined;
     }
     return "back";
   }, [step]);
@@ -75,7 +75,7 @@ const ListingModal = () => {
       title="Listing"
       action={onNext}
       actionLabel={actionLabel}
-      secondaryAction={step === STEPS.CATEGORY ? null : onBack}
+      secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
       secondaryActionLabel={secondaryLabel}
       content={content}
       footer={footer}
