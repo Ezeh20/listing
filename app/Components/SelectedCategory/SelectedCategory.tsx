@@ -23,7 +23,7 @@ const SelectedCategory: React.FC<CategoryProps> = ({
       }
       onClick={onClick}
     >
-      <Icon size={24} />
+      <Icon size={22} />
       <p className={styles.label}>{label}</p>
     </div>
   );

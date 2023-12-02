@@ -16,9 +16,22 @@ enum STEPS {
   PRICE,
 }
 
+const listings = {
+  title: "",
+  description: "",
+  imageSrc: "",
+  category: "",
+  roomCount: 1,
+  bathroomCount: 1,
+  guestCount: 1,
+  locationValue: "",
+  price: 1,
+};
+
 const ListingModal = () => {
   const listingModal = useListingModal();
   const [step, setStep] = useState(STEPS.CATEGORY);
+  const [listingData, setListingData] = useState(listings);
 
   const onBack = useCallback(() => {
     setStep((prev) => prev - 1);
@@ -48,6 +61,7 @@ const ListingModal = () => {
 
   const footer = <p>Step: {step} of 5</p>;
 
+  //first content will be declared with let cause it will be changed
   let content = (
     <div className={styles.category}>
       <Header
@@ -60,13 +74,27 @@ const ListingModal = () => {
             key={itm.label}
             label={itm.label}
             icon={itm.icon}
-            selected={false}
-            onClick={() => {}}
+            selected={listingData.category === itm.label}
+            onClick={() => {
+              setListingData((pre) => ({ ...pre, category: itm.label }));
+            }}
           />
         ))}
       </div>
     </div>
   );
+
+  //location step
+  if (step === STEPS.LOCATION) {
+    content = (
+      <div className={styles.location}>
+        <Header
+          title="Where is the property located"
+          subtitle="Please indicate the property's location"
+        />
+      </div>
+    );
+  }
 
   return (
     <Modal

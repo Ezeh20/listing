@@ -1,8 +1,12 @@
 .selectedCategory {
-    border: 1px solid #888;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    border: 1px solid #999;
     border-radius: 8px;
     padding: .5rem;
     font-weight: 500;
+    color: #444;
     cursor: pointer;
 
     &:hover {
@@ -10,6 +14,11 @@
     }
 
     .label {
-        font-size: 14px;
+        font-size: 13px;
     }
+}
+
+.selected{
+    border: 1px solid #000;
+    color: #111;
 }
