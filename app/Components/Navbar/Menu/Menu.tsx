@@ -2,13 +2,11 @@
 import React, { useCallback, useState } from "react";
 import styles from "./Menu.module.scss";
 import { AiOutlineMenu } from "react-icons/ai";
-import { IoPersonOutline } from "react-icons/io5";
 import MenuItems from "./MenuItems/MenuItems";
 import useRegister from "@/app/hooks/useRegister";
 import useLoginModal from "@/app/hooks/useLogin";
 import useListingModal from "@/app/hooks/useListing";
 import { signOut } from "next-auth/react";
-import toast from "react-hot-toast";
 import { SafeUser } from "@/app/types";
 import Avatar from "../../Avatar/Avatar";
 
@@ -28,7 +26,7 @@ const Menu: React.FC<MenuProps> = ({ currentUser }) => {
 
   //show the rent modal if a user is logged in else show the login modal
   const onRent = useCallback(() => {
-    if (!currentUser) {
+    if (currentUser) {
       return loginModal.onOpen();
     }
     //open rent modal

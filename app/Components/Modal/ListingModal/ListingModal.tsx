@@ -111,6 +111,18 @@ const ListingModal = () => {
 
   const footer = <p>Step: {step} of 5</p>;
 
+  //location step
+  if (step === STEPS.LOCATION) {
+    content = (
+      <div className={styles.location}>
+        <Header
+          title="Where is the property located"
+          subtitle="Please indicate the property's location"
+        />
+      </div>
+    );
+  }
+
   return (
     <Modal
       isOpen={listingModal.isOpen}

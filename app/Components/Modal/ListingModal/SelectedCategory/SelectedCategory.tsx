@@ -18,12 +18,22 @@ const SelectedCategory: React.FC<CategoryProps> = ({
   return (
     <div
       className={
+<<<<<<< HEAD:app/Components/Modal/ListingModal/SelectedCategory/SelectedCategory.tsx
         !selected
           ? `${styles.selectedCategory}`
           : `${styles.selectedCategory} ${styles.selected}`
       }
       onClick={onClick}>
       <Icon size={24} />
+=======
+        selected
+          ? `${styles.selected} ${styles.selectedCategory}`
+          : `${styles.selectedCategory}`
+      }
+      onClick={onClick}
+    >
+      <Icon size={22} />
+>>>>>>> 651845c9f9bcbc91ab163848ba2499d6abee3bae:app/Components/SelectedCategory/SelectedCategory.tsx
       <p className={styles.label}>{label}</p>
     </div>
   );
