@@ -9,3 +9,15 @@ export type SafeUser = Omit<
     updatedAt: string;
     emailVerified: string | null;
 }
+
+export type ListingType= {
+    category: string,
+    location: any,
+    guestCount: number,
+    roomCount: number,
+    bathroomCount: number,
+    imageSrc: string,
+    price: number,
+    title: string,
+    description: string,
+}

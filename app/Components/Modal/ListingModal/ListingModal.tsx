@@ -6,6 +6,8 @@ import useListingModal from "@/app/hooks/useListing";
 import Header from "../../Header/Header";
 import { categoriesItems } from "../../Categories/CategoriesItems";
 import SelectedCategory from "./SelectedCategory/SelectedCategory";
+import SelectedLocation from "./SelecteLocation/SelectedLocation";
+import { ListingType } from "@/app/types";
 
 enum STEPS {
   CATEGORY,
@@ -31,7 +33,7 @@ const initialListings = {
 const ListingModal = () => {
   const listingModal = useListingModal();
   const [step, setStep] = useState(STEPS.CATEGORY);
-  const [listingData, setListingData] = useState(initialListings);
+  const [listingData, setListingData] = useState<ListingType>(initialListings);
 
   const onBack = useCallback(() => {
     setStep((prev) => prev - 1);
@@ -64,12 +66,10 @@ const ListingModal = () => {
     setListingData((prev) => ({ ...prev, category: label }));
   }, []);
 
+  //the body of the modal will be declared with let so as to change whenever
   let content = (
     <div className={styles.category}>
-      <Header
-        title="Which of these best describes your place"
-        subtitle="pick a category"
-      />
+      <Header title="Which of these best describes your place" subtitle="pick a category" />
       <div className={styles.categories}>
         {categoriesItems.map((itm) => (
           <SelectedCategory
@@ -83,25 +83,28 @@ const ListingModal = () => {
       </div>
     </div>
   );
+  console.log(listingData);
 
+  //step 2 select location
   if (step === STEPS.LOCATION) {
     content = (
       <div className={styles.location}>
-        <Header
-          title="Where is your place located?"
-          subtitle="Help guests find you!"
+        <Header title="Where is your place located?" subtitle="Help guests find you!" />
+        <SelectedLocation
+          value={listingData.location}
+          onChange={(value) =>
+            setListingData((pre: ListingType) => ({ ...pre, location: value }))
+          }
         />
       </div>
     );
   }
 
+  //step 3
   if (step === STEPS.INFO) {
     content = (
       <div className={styles.info}>
-        <Header
-          title="Share some basics about your place"
-          subtitle="what amenities do you have?"
-        />
+        <Header title="Share some basics about your place" subtitle="what amenities do you have?" />
       </div>
     );
   }

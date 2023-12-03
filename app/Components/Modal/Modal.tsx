@@ -7,7 +7,7 @@ import Button from "../Button/Button";
 interface ModalProps {
   disabled?: boolean;
   isOpen: boolean;
-  onClose: (e: boolean) => void;
+  onClose: () => void;
   title?: string;
   content?: React.ReactElement;
   footer?: React.ReactElement;
