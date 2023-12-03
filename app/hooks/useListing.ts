@@ -1,9 +1,9 @@
 import { create } from "zustand";
 
 interface listingProps {
-    isOpen: () => void;
-    onOpen: boolean;
-    onClose: boolean
+    isOpen: boolean;
+    onOpen: () => void;
+    onClose: () => void
 }
 
 

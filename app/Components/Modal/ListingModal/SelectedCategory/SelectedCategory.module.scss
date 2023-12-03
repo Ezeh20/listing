@@ -1,0 +1,23 @@
+.selectedCategory {
+    border: 1px solid #9999;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem .6rem;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+
+    &:hover {
+        border: 1px solid #000;
+    }
+
+    .label {
+        font-size: 15px;
+    }
+}
+
+.selected {
+    border: 1px solid #000;
+}
