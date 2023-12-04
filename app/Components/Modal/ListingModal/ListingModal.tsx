@@ -9,6 +9,7 @@ import SelectedCategory from "./SelectedCategory/SelectedCategory";
 import SelectedLocation from "./SelecteLocation/SelectedLocation";
 import { ListingType } from "@/app/types";
 import dynamic from "next/dynamic";
+import Counter from "../../Counter/Counter";
 
 enum STEPS {
   CATEGORY,
@@ -108,11 +109,31 @@ const ListingModal = () => {
     );
   }
 
-  //step 3
+  //step 3 more Information
   if (step === STEPS.INFO) {
     content = (
       <div className={styles.info}>
         <Header title="Share some basics about your place" subtitle="what amenities do you have?" />
+        <div className={styles.counter}>
+          <Counter
+            value={listingData?.guestCount}
+            title="How many people are allowed"
+            subtitle="guest count"
+            onChange={(value) => setListingData((prev) => ({ ...prev, guestCount: value }))}
+          />
+          <Counter
+            value={listingData?.bathroomCount}
+            title="How many bathrooms do you have"
+            subtitle="bathroom count"
+            onChange={(value) => setListingData((prev) => ({ ...prev, bathroomCount: value }))}
+          />
+          <Counter
+            value={listingData?.roomCount}
+            title="How many rooms are available"
+            subtitle="room count"
+            onChange={(value) => setListingData((prev) => ({ ...prev, roomCount: value }))}
+          />
+        </div>
       </div>
     );
   }

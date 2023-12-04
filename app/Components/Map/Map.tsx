@@ -23,7 +23,7 @@ interface MapProps {
 const Map: React.FC<MapProps> = ({ center }) => {
   return (
     <MapContainer
-      center={(center as L.LatLngExpression) || [30, -10]}
+      center={(center as L.LatLngExpression) || [70, -10]}
       zoom={center ? 5 : 2}
       scrollWheelZoom={false}
       className={styles.map}

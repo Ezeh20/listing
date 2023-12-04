@@ -9,12 +9,19 @@
     }
 }
 
-.location{
+.location {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-.mapp{
+.mapp {
     min-height: 35vh;
+}
+
+.counter {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
 }
