@@ -8,6 +8,7 @@ import { categoriesItems } from "../../Categories/CategoriesItems";
 import SelectedCategory from "./SelectedCategory/SelectedCategory";
 import SelectedLocation from "./SelecteLocation/SelectedLocation";
 import { ListingType } from "@/app/types";
+import dynamic from "next/dynamic";
 
 enum STEPS {
   CATEGORY,
@@ -34,6 +35,13 @@ const ListingModal = () => {
   const listingModal = useListingModal();
   const [step, setStep] = useState(STEPS.CATEGORY);
   const [listingData, setListingData] = useState<ListingType>(initialListings);
+  const Map = useMemo(
+    () =>
+      dynamic(() => import("../../Map/Map"), {
+        ssr: false,
+      }),
+    [listingData.location]
+  );
 
   const onBack = useCallback(() => {
     setStep((prev) => prev - 1);
@@ -83,7 +91,6 @@ const ListingModal = () => {
       </div>
     </div>
   );
-  console.log(listingData);
 
   //step 2 select location
   if (step === STEPS.LOCATION) {
@@ -92,10 +99,11 @@ const ListingModal = () => {
         <Header title="Where is your place located?" subtitle="Help guests find you!" />
         <SelectedLocation
           value={listingData.location}
-          onChange={(value) =>
-            setListingData((pre: ListingType) => ({ ...pre, location: value }))
-          }
+          onChange={(value) => setListingData((pre: ListingType) => ({ ...pre, location: value }))}
         />
+        <div className={styles.mapp}>
+          <Map center={listingData.location?.latlng} />
+        </div>
       </div>
     );
   }
@@ -110,18 +118,6 @@ const ListingModal = () => {
   }
 
   const footer = <p>Step: {step} of 5</p>;
-
-  //location step
-  if (step === STEPS.LOCATION) {
-    content = (
-      <div className={styles.location}>
-        <Header
-          title="Where is the property located"
-          subtitle="Please indicate the property's location"
-        />
-      </div>
-    );
-  }
 
   return (
     <Modal

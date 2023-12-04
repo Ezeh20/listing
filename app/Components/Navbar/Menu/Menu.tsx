@@ -26,7 +26,7 @@ const Menu: React.FC<MenuProps> = ({ currentUser }) => {
 
   //show the rent modal if a user is logged in else show the login modal
   const onRent = useCallback(() => {
-    if (currentUser) {
+    if (!currentUser) {
       return loginModal.onOpen();
     }
     //open rent modal

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "./SelectedLocation.module.scss";
 import useCountries from "@/app/hooks/useCountry";
