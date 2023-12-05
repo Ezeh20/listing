@@ -11,6 +11,8 @@ import { ListingType } from "@/app/types";
 import dynamic from "next/dynamic";
 import Counter from "../../Counter/Counter";
 import ImageUpload from "../../ImageUpload/ImageUpload";
+import Input from "../../Input/Input";
+import TextArea from "../../Input/TextArea/TextArea";
 
 enum STEPS {
   CATEGORY,
@@ -70,9 +72,6 @@ const ListingModal = () => {
     }
     return "next";
   }, [step]);
-
-  console.log(listingData);
-  
 
   //set the category
   const selectCategory = useCallback((label: string) => {
@@ -154,6 +153,41 @@ const ListingModal = () => {
             onChange={(value) => setListingData((prev) => ({ ...prev, imageSrc: value }))}
           />
         </div>
+      </div>
+    );
+  }
+
+  //step 5 title and description
+  if (step === STEPS.DESCRIPTION) {
+    content = (
+      <div>
+        <Header title="Describe your place" subtitle="Just be short and simple" />
+        <div className={styles.desc}>
+          <Input
+            type="text"
+            id="title"
+            label="Title"
+            placeholder="title"
+            value={listingData.title}
+            onChange={(e) => setListingData((prev) => ({ ...prev, title: e.target.value }))}
+          />
+          <TextArea
+            label="Description"
+            id="description"
+            placeholder="describe your place"
+            value={listingData.description}
+            onChange={(e) => setListingData((prev) => ({ ...prev, description: e.target.value }))}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  //step 6 price
+  if (step === STEPS.PRICE) {
+    content = (
+      <div>
+        <Header title="Set your asking price" subtitle="how much do you charge per night"/>
       </div>
     );
   }
