@@ -20,8 +20,14 @@
 }
 
 .counter {
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 2.5rem;
+    margin-top: 1.5rem;
+}
+
+.imgUpload {
     margin-top: 1.5rem;
 }

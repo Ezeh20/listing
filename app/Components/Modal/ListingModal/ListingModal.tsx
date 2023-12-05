@@ -10,6 +10,7 @@ import SelectedLocation from "./SelecteLocation/SelectedLocation";
 import { ListingType } from "@/app/types";
 import dynamic from "next/dynamic";
 import Counter from "../../Counter/Counter";
+import ImageUpload from "../../ImageUpload/ImageUpload";
 
 enum STEPS {
   CATEGORY,
@@ -69,6 +70,9 @@ const ListingModal = () => {
     }
     return "next";
   }, [step]);
+
+  console.log(listingData);
+  
 
   //set the category
   const selectCategory = useCallback((label: string) => {
@@ -132,6 +136,22 @@ const ListingModal = () => {
             title="How many rooms are available"
             subtitle="room count"
             onChange={(value) => setListingData((prev) => ({ ...prev, roomCount: value }))}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  //step 4 image upload
+
+  if (step === STEPS.IMAGES) {
+    content = (
+      <div>
+        <Header title="Show an image of your space" subtitle="a cool image will be nice" />
+        <div className={styles.imgUpload}>
+          <ImageUpload
+            value={listingData?.imageSrc}
+            onChange={(value) => setListingData((prev) => ({ ...prev, imageSrc: value }))}
           />
         </div>
       </div>

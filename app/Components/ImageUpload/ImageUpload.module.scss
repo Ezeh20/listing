@@ -1,0 +1,32 @@
+.upload {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8.8rem;
+    border: 1px dashed #9999;
+    border-radius: 10px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .prompt {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: .5rem;
+    }
+
+    .imgContainer {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+
+        .img {
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    }
+}
