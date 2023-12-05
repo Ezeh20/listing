@@ -8,7 +8,6 @@ const formmatedContries = countries.map((country) => ({
     flag: country.flag
 }))
 
-console.log(formmatedContries);
 
 const useCountries = () => {
     const getAllCountries = () => formmatedContries;

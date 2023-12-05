@@ -6,7 +6,7 @@ interface InputProps {
   label?: string;
   id: string;
   placeholder: string;
-  value: string;
+  value: string | number;
   type: string;
   error?: boolean;
   errorMessage?: string;
@@ -36,11 +36,11 @@ const Input: React.FC<InputProps> = ({
             id={id}
             type={type}
             placeholder={placeholder}
-            value={value}
+            value={value.toString()}
             onChange={onChange}
-            className={
-              error ? `${styles.input} ${styles.error}` : `${styles.input}`
-            }
+            className={`${error ? `${styles.input} ${styles.error}` : `${styles.input}`} ${
+              formatPrice ? `${styles.pad}` : `${styles.input}`
+            }`}
           />
           {error && <small className={styles.small}>{errorMessage}</small>}
         </div>

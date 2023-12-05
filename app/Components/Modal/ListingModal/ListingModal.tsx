@@ -39,6 +39,9 @@ const ListingModal = () => {
   const listingModal = useListingModal();
   const [step, setStep] = useState(STEPS.CATEGORY);
   const [listingData, setListingData] = useState<ListingType>(initialListings);
+
+  console.log(listingData);
+
   const Map = useMemo(
     () =>
       dynamic(() => import("../../Map/Map"), {
@@ -187,7 +190,20 @@ const ListingModal = () => {
   if (step === STEPS.PRICE) {
     content = (
       <div>
-        <Header title="Set your asking price" subtitle="how much do you charge per night"/>
+        <Header title="Set your asking price" subtitle="how much do you charge per night" />
+        <div className={styles.price}>
+          <Input
+            type="number"
+            id="price"
+            label="Price"
+            placeholder="price"
+            formatPrice
+            value={listingData.price}
+            onChange={(e) =>
+              setListingData((prev) => ({ ...prev, price: parseInt(e.target.value) }))
+            }
+          />
+        </div>
       </div>
     );
   }

@@ -17,7 +17,12 @@
             padding: .7rem .5rem;
             border-radius: 5px;
         }
-        .error{
+
+        .pad {
+            padding: .7rem 1.8rem;
+        }
+
+        .error {
             border: 1px solid rgb(243, 104, 104);
         }
 
@@ -25,16 +30,19 @@
             font-size: 15px;
             opacity: .8;
         }
-        .small{
+
+        .small {
             color: red;
             font-size: 15px;
         }
-        .dollar{
+
+        .dollar {
             position: absolute;
-            right: 10px;
+            left: 10px;
             top: 28%;
             font-size: 19px;
-            &:hover{
+
+            &:hover {
                 cursor: pointer;
             }
         }
