@@ -13,6 +13,9 @@ import Counter from "../../Counter/Counter";
 import ImageUpload from "../../ImageUpload/ImageUpload";
 import Input from "../../Input/Input";
 import TextArea from "../../Input/TextArea/TextArea";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 enum STEPS {
   CATEGORY,
@@ -36,12 +39,12 @@ const initialListings = {
 };
 
 const ListingModal = () => {
+  const router = useRouter();
   const listingModal = useListingModal();
   const [step, setStep] = useState(STEPS.CATEGORY);
   const [listingData, setListingData] = useState<ListingType>(initialListings);
 
-  console.log(listingData);
-
+  //dynamically import the map component
   const Map = useMemo(
     () =>
       dynamic(() => import("../../Map/Map"), {
@@ -50,18 +53,32 @@ const ListingModal = () => {
     [listingData.location]
   );
 
+  const onSubmit = async () => {
+    try {
+      const res = await axios.post("/api/listing", listingData);
+      console.log(res);
+      toast.success(res?.data.message);
+      setListingData(initialListings);
+      router.refresh();
+    } catch (error: any) {
+      toast.error("something went wrong try again");
+    }
+  };
+  //take 1 step back
   const onBack = useCallback(() => {
     setStep((prev) => prev - 1);
   }, []);
 
+  // take 1 step forward the submit at the end
   const onNext = useCallback(() => {
     if (step < STEPS.PRICE) {
       setStep((prev) => prev + 1);
     } else if (step === STEPS.PRICE) {
-      alert("listing created successfully");
+      onSubmit();
     }
   }, [step]);
 
+  //secondary label
   const secondaryLabel = useMemo(() => {
     if (step === STEPS.CATEGORY) {
       return undefined;
@@ -69,6 +86,7 @@ const ListingModal = () => {
     return "back";
   }, [step]);
 
+  //action label
   const actionLabel = useMemo(() => {
     if (step === STEPS.PRICE) {
       return "create";

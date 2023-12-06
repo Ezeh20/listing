@@ -16,7 +16,7 @@ interface ImageUploadProps {
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ value, onChange }) => {
   const handleUpload = useCallback(
-    (result: any) => {   
+    (result: any) => {
       onChange(result.info.secure_url);
     },
     [onChange]
@@ -30,7 +30,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ value, onChange }) => {
             <p className={styles.prompt}>Click to upload</p>
             {value && (
               <div className={styles.imgContainer}>
-                <Image fill src={value} alt="uploaded" className={styles.img}/>
+                <Image fill src={value} alt="uploaded" className={styles.img} />
               </div>
             )}
           </div>

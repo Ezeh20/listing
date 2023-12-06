@@ -18,12 +18,9 @@ export const metadata: Metadata = {
   description: "Find any property in your desired location",
 };
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const currentUser = await getCurrentUser();
+
   return (
     <html lang="en">
       <body className={poppins.className}>
