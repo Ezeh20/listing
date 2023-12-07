@@ -1,0 +1,29 @@
+.container {
+    .content {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: .5rem;
+
+        .image {
+            min-width: 180px;
+            min-height: 180px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: all 300ms ease-in-out;
+
+            .img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: all 300ms ease-in-out;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+    }
+}

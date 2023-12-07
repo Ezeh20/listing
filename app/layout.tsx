@@ -29,7 +29,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <LoginModal />
         <ListingModal />
         <Navbar currentUser={currentUser} />
-        {children}
+        <div className=" pt-10 pb-20">{children}</div>
       </body>
     </html>
   );
