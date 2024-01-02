@@ -1,7 +1,7 @@
 import Container from "./Components/Container/Container";
 import ListingCard from "./Components/ListingCard/ListingCard";
 import NoListingFound from "./Components/NoListingFound/NoListingFound";
-import {  getCurrentUser } from "./actions/getCurrentUser";
+import { getCurrentUser } from "./actions/getCurrentUser";
 import { getListing } from "./actions/getListings";
 import styles from "./page.module.scss";
 
@@ -26,8 +26,10 @@ export default async function Home() {
   return (
     <Container>
       <div className={styles.listings}>
-        {listings.map((listing) => {
-          return <ListingCard data={listing} currentUser={currentUser}/>;
+        {listings.map((listing) => {        
+          return (
+            <ListingCard key={listing.id} data={listing} currentUser={currentUser} />
+          );
         })}
       </div>
     </Container>

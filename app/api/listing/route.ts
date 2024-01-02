@@ -39,7 +39,7 @@ export const POST = async (request: NextRequest) => {
     });
     return NextResponse.json(
       { message: "listing created successfully", listing: listing },
-      { status: 200 }
+      { status: 201 }
     );
   } catch (error) {
     return NextResponse.json(

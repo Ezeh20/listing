@@ -53,17 +53,19 @@ const ListingModal = () => {
     [listingData.location]
   );
 
-  const onSubmit = async () => {
+  const onSubmit = useCallback(async () => {
     try {
       const res = await axios.post("/api/listing", listingData);
       console.log(res);
       toast.success(res?.data.message);
       setListingData(initialListings);
       router.refresh();
+      listingModal.onClose();
     } catch (error: any) {
       toast.error("something went wrong try again");
     }
-  };
+  }, [listingData, listingModal, router]);
+  
   //take 1 step back
   const onBack = useCallback(() => {
     setStep((prev) => prev - 1);
@@ -76,7 +78,7 @@ const ListingModal = () => {
     } else if (step === STEPS.PRICE) {
       onSubmit();
     }
-  }, [step]);
+  }, [step, onSubmit]);
 
   //secondary label
   const secondaryLabel = useMemo(() => {
@@ -102,7 +104,10 @@ const ListingModal = () => {
   //the body of the modal will be declared with let so as to change whenever
   let content = (
     <div className={styles.category}>
-      <Header title="Which of these best describes your place" subtitle="pick a category" />
+      <Header
+        title="Which of these best describes your place"
+        subtitle="pick a category"
+      />
       <div className={styles.categories}>
         {categoriesItems.map((itm) => (
           <SelectedCategory
@@ -124,7 +129,9 @@ const ListingModal = () => {
         <Header title="Where is your place located?" subtitle="Help guests find you!" />
         <SelectedLocation
           value={listingData.location}
-          onChange={(value) => setListingData((pre: ListingType) => ({ ...pre, location: value }))}
+          onChange={(value) =>
+            setListingData((pre: ListingType) => ({ ...pre, location: value }))
+          }
         />
         <div className={styles.mapp}>
           <Map center={listingData.location?.latlng} />
@@ -137,25 +144,34 @@ const ListingModal = () => {
   if (step === STEPS.INFO) {
     content = (
       <div className={styles.info}>
-        <Header title="Share some basics about your place" subtitle="what amenities do you have?" />
+        <Header
+          title="Share some basics about your place"
+          subtitle="what amenities do you have?"
+        />
         <div className={styles.counter}>
           <Counter
             value={listingData?.guestCount}
             title="How many people are allowed"
             subtitle="guest count"
-            onChange={(value) => setListingData((prev) => ({ ...prev, guestCount: value }))}
+            onChange={(value) =>
+              setListingData((prev) => ({ ...prev, guestCount: value }))
+            }
           />
           <Counter
             value={listingData?.bathroomCount}
             title="How many bathrooms do you have"
             subtitle="bathroom count"
-            onChange={(value) => setListingData((prev) => ({ ...prev, bathroomCount: value }))}
+            onChange={(value) =>
+              setListingData((prev) => ({ ...prev, bathroomCount: value }))
+            }
           />
           <Counter
             value={listingData?.roomCount}
             title="How many rooms are available"
             subtitle="room count"
-            onChange={(value) => setListingData((prev) => ({ ...prev, roomCount: value }))}
+            onChange={(value) =>
+              setListingData((prev) => ({ ...prev, roomCount: value }))
+            }
           />
         </div>
       </div>
@@ -167,7 +183,10 @@ const ListingModal = () => {
   if (step === STEPS.IMAGES) {
     content = (
       <div>
-        <Header title="Show an image of your space" subtitle="a cool image will be nice" />
+        <Header
+          title="Show an image of your space"
+          subtitle="a cool image will be nice"
+        />
         <div className={styles.imgUpload}>
           <ImageUpload
             value={listingData?.imageSrc}
@@ -190,14 +209,18 @@ const ListingModal = () => {
             label="Title"
             placeholder="title"
             value={listingData.title}
-            onChange={(e) => setListingData((prev) => ({ ...prev, title: e.target.value }))}
+            onChange={(e) =>
+              setListingData((prev) => ({ ...prev, title: e.target.value }))
+            }
           />
           <TextArea
             label="Description"
             id="description"
             placeholder="describe your place"
             value={listingData.description}
-            onChange={(e) => setListingData((prev) => ({ ...prev, description: e.target.value }))}
+            onChange={(e) =>
+              setListingData((prev) => ({ ...prev, description: e.target.value }))
+            }
           />
         </div>
       </div>
@@ -208,7 +231,10 @@ const ListingModal = () => {
   if (step === STEPS.PRICE) {
     content = (
       <div>
-        <Header title="Set your asking price" subtitle="how much do you charge per night" />
+        <Header
+          title="Set your asking price"
+          subtitle="how much do you charge per night"
+        />
         <div className={styles.price}>
           <Input
             type="number"
@@ -218,7 +244,7 @@ const ListingModal = () => {
             formatPrice
             value={listingData.price}
             onChange={(e) =>
-              setListingData((prev) => ({ ...prev, price: parseInt(e.target.value) }))
+              setListingData((prev) => ({ ...prev, price: Number(e.target.value) }))
             }
           />
         </div>

@@ -1,0 +1,20 @@
+.heartContainer {
+    position: relative;
+    cursor: pointer;
+
+    .heartOutline {
+        color: aliceblue;
+        font-weight: 200;
+    }
+
+    .heart {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        color: rgba(60, 60, 60, 0.117);
+    }
+
+    .liked {
+        color: rgb(246, 75, 75);
+    }
+}

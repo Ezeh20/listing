@@ -1,4 +1,6 @@
 .container {
+    position: relative;
+
     .content {
         display: flex;
         width: 100%;
@@ -25,5 +27,29 @@
             }
         }
 
+        .region {
+            font-size: 17px;
+            color: black;
+            font-weight: 600;
+        }
+
+        .price {
+            display: flex;
+            align-items: center;
+            gap: .2rem;
+
+            .light {
+                opacity: .8;
+                color: #999;
+            }
+        }
+    }
+
+    .like {
+        position: absolute;
+        top: 0;
+        right: .7rem;
+        top: .7rem;
+        z-index: 1;
     }
 }

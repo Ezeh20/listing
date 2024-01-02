@@ -7,6 +7,8 @@ import useCountries from "@/app/hooks/useCountry";
 import styles from "./ListingCard.module.scss";
 import { format } from "date-fns";
 import Image from "next/image";
+import Liked from "../Liked/Liked";
+import Button from "../Button/Button";
 
 interface ListingCardProps {
   data: Listing;
@@ -31,14 +33,14 @@ const ListingCard: React.FC<ListingCardProps> = ({
   const location = getSingleCountry(data.locationValue);
 
   //this carries out an action without affect the entire div
-  const handleCancle = useCallback(
+  const handleAction = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
 
       if (disabled) return;
       onAction?.(actionId);
     },
-    [onAction, actionId]
+    [onAction, actionId, disabled]
   );
 
   //the price to be rendered shows the listing price or the total reservation price if this card is used for reservations
@@ -64,6 +66,18 @@ const ListingCard: React.FC<ListingCardProps> = ({
         <div className={styles.image}>
           <Image fill src={data.imageSrc} alt="listing image" className={styles.img} />
         </div>
+        <p className={styles.region}>
+          {location?.region}, {location?.label}
+        </p>
+        <p className={styles.reserve}>{reservationDate || data.category}</p>
+        <div className={styles.price}>
+          <p>${price}</p>
+          {!reservationDate && <p className={styles.light}>/night</p>}
+        </div>
+        {onAction && actionLabel && <Button label="button" onClick={() => {}} />}
+      </div>
+      <div className={styles.like}>
+        <Liked id={data.id} currentUser={currentUser} />
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ export const POST = async (request: NextRequest) => {
                 hashedPassword
             }
         })
-        return NextResponse.json({ message: "Account created successfully", user: User }, { status: 200 })
+        return NextResponse.json({ message: "Account created successfully", user: User }, { status: 201 })
     } catch (error) {
         return NextResponse.json({ error: "Something went wrong" }, { status: 500 })
     }
